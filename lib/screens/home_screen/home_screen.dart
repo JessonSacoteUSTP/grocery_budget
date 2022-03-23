@@ -88,7 +88,7 @@ class HomeScreen extends StatelessWidget {
                       ),
                       children: [
                         Text(
-                            'Grocery Budget helps you to track your expenses in the grocery and make sure that you are spending your hard earn money right.\n\nDevelopers: \nJay Anne Arquiza'),
+                            'Grocery Budget helps you to track your expenses in the grocery and make sure that you are spending your hard earn money right.\n\nDeveloper: \nJay Anne Arquiza\n\n\n\n\n USTP - 2022'),
                       ]);
                 },
               ),

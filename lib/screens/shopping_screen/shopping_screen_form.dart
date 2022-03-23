@@ -7,6 +7,8 @@ import 'package:provider/provider.dart';
 
 import '../../app_state/cart_data.dart';
 import '../../models/items.dart';
+import 'package:flutter_clean_architecture/flutter_clean_architecture.dart';
+import 'package:rflutter_alert/rflutter_alert.dart';
 
 class ShoppingForm extends StatefulWidget {
   @override
@@ -39,7 +41,7 @@ class _ShoppingFormState extends State<ShoppingForm> {
               SizedBox(height: 15),
               _priceField(),
 
-              _saveButton()
+              _saveButton(),
             ],
           ),
         ),
@@ -151,14 +153,37 @@ class _ShoppingFormState extends State<ShoppingForm> {
           child: RaisedButton(
             shape:
                 RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
-            color: Colors.white,
+            color: Color.fromRGBO(255, 255, 255, 1),
             onPressed: () {
               if (_formKey.currentState.validate()) {
                 _formKey.currentState.save();
-                Provider.of<CartData>(context, listen: false).addItems(_items);
-                _formKey.currentState.reset();
                 inspect(_items);
-                Navigator.pushNamed(context, '/startShopping');
+                Provider.of<CartData>(context, listen: false).addItems(_items);
+
+                _formKey.currentState.reset();
+                Alert(
+                        context: context,
+                        title: "RFLUTTER",
+                        desc: "Flutter is awesome.")
+                    .show();
+                // _items.itemName = '';
+                // _items.price = 0;
+                // _items.quantity = 0;
+                inspect(_items);
+                Provider.of<CartData>(context, listen: false).hasListeners;
+                Navigator.pop(context);
+                Navigator.pushNamed(context, "/startShopping");
+
+                // Element.reassemble();
+                // Navigator.pushReplacement(
+                //     context,
+                //     MaterialPageRoute(
+                //         builder: (BuildContext context) => super.widget));
+                // refresh() {
+                //   setState(() {});
+                // }
+                //setState(() {});
+
               }
             },
             child: Text(

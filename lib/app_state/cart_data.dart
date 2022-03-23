@@ -22,6 +22,7 @@ class CartData extends ChangeNotifier {
   void addItems(item) {
     _additems.add(item);
     notifyListeners();
+    
   }
 
   void removeItem(item) {
